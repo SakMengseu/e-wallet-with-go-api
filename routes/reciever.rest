@@ -1,0 +1,36 @@
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTkwNzcwOTEsImlhdCI6MTc1ODgxNzg5MSwidXNlcl9pZCI6ImFlMTQ2ZTg1LTM5NzEtNDc3ZS1hYmM5LTIxNDg5NjEzNzJkMSJ9._zT_kCmditZlpbFTB7jiWiIzhblK9utCt6qsUTMzFuE
+### 1️⃣ Register a new user
+POST http://localhost:8080/api/v1/register
+Content-Type: application/json
+
+{
+  "name": "Reciever",
+  "email": "reciever@example.com",
+  "phone": "0987654321",
+  "password": "123456"
+}
+
+
+### 2️⃣ Login with the registered user to get JWT token
+
+POST http://localhost:8080/api/v1/login
+Content-Type: application/json
+
+{
+  "email": "reciever@example.com",
+  "password": "123456"
+}
+
+### 3️⃣ Access protected route with the obtained JWT token
+GET http://localhost:8080/api/v1/wallet
+Authorization: Bearer {{token}}
+
+
+### 4️⃣ View Transaction all History
+GET http://localhost:8080/api/v1/transactions/histories
+Authorization: Bearer {{token}}
+
+### 4️⃣ View Specific Transaction
+@transaction_id =68ce5924a94fa975ab75acc4
+GET http://localhost:8080/api/v1/transactions/history/{{transaction_id}}
+Authorization: Bearer {{token}}
