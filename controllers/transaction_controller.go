@@ -88,7 +88,8 @@ func SendMoney(c *gin.Context, db *mongo.Database) {
 		return
 	}
 
-	_, err = walletColl.UpdateOne(c, bson.M{"user_id": receiverWallet.ID}, bson.M{"$set": bson.M{"balance": receiverWallet.Balance}})
+	fmt.Println("Receiver Wallet ID:", receiverWallet.UserID)
+	_, err = walletColl.UpdateOne(c, bson.M{"user_id": receiverWallet.UserID}, bson.M{"$set": bson.M{"balance": receiverWallet.Balance}})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update receiver wallet"})
 		return
@@ -174,7 +175,7 @@ func TransactionHistories(c *gin.Context, db *mongo.Database) {
 			{Key: "foreignField", Value: "_id"},     // field in users
 			{Key: "as", Value: "sender"},            // output array
 		}}},
-		
+
 		{{Key: "$lookup", Value: bson.D{
 			{Key: "from", Value: "users"},             // target collection
 			{Key: "localField", Value: "receiver_id"}, // field in transactions

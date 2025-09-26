@@ -4,10 +4,10 @@ POST http://localhost:8080/api/v1/register
 Content-Type: application/json
 
 {
-  "name": "Seu",
-  "email": "seu@gmail.com",
-  "phone": "012242526",
-  "password": "11112222"
+  "name": "Alice",
+  "email": "alice@example.com",
+  "phone": "012345678",
+  "password": "123456"
 }
 
 
@@ -17,12 +17,12 @@ POST http://localhost:8080/api/v1/login
 Content-Type: application/json
 
 {
-  "email": "seu@gmail.com",
-  "password": "11112222"
+  "email": "alice@example.com",
+  "password": "123456"
 }
 
 ### 3️⃣ Access protected route with the obtained JWT token
-@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTkxMjk5OTcsImlhdCI6MTc1ODg3MDc5NywidXNlcl9pZCI6Ijk2Nzg5MDE2LTY1NWQtNDkxZi1hYjI4LTVlZjU0Zjg3MGUzMiJ9.9Q0-mwSvqUttkrS3HwWvgATIUuZacczlO4BT8QVmp8I
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTkxMjk4NTMsImlhdCI6MTc1ODg3MDY1MywidXNlcl9pZCI6ImM5NDc0NWJkLTQzNDktNDU0OS1iMWRjLWZlODMzMDY5YzRkZSJ9.E6bj6X2rJraOJ-UdQozVoGiUzXTrKqfqS3TEKX9eKfs
 GET http://localhost:8080/api/v1/wallet
 Authorization: Bearer {{token}}
 
@@ -52,8 +52,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "receiver_email": "alice@example.com",
-  "amount": 50
+  "receiver_email": "reciever@example.com",
+    "amount": 50
 }
 
 ### 7️⃣ View Transaction all History
